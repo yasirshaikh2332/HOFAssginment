@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultMessage {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Validation</h1>
+        <label for="urlInput">Enter a URL:</label>
+        <input type="text" id="urlInput" placeholder="http://example.com">
+        <button onclick="validateURL()">Validate</button>
+        <p id="resultMessage"></p>
+    </div>
+    <script>
+        function validateURL() {
+            const urlInput = document.getElementById("urlInput");
+            const resultMessage = document.getElementById("resultMessage");
+
+            // Regular expression to match valid URLs
+            const urlPattern = /^(http|https):\/\/[A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=]+[A-Za-z]+$/;
+
+            const url = urlInput.value;
+
+            if (urlPattern.test(url)) {
+                resultMessage.textContent = "Valid URL!";
+                resultMessage.style.color = "green";
+            } else {
+                resultMessage.textContent = "Invalid URL!";
+                resultMessage.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

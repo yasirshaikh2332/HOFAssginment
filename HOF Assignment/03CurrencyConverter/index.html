@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        #converter {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="converter">
+        <h2>Currency Converter</h2>
+        <label for="usdAmount">Enter USD Amount:</label>
+        <input type="number" id="usdAmount" placeholder="Enter USD amount">
+        <button onclick="convertCurrency()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Currency conversion rate (1 USD to INR)
+        const conversionRate = 80.0;
+
+        // Function to convert USD to INR
+        const convertToINR = (usdAmount) => usdAmount * conversionRate;
+
+        // Function to handle the conversion
+        function convertCurrency() {
+            const usdAmount = parseFloat(document.getElementById('usdAmount').value);
+
+            if (!isNaN(usdAmount)) {
+                const inrAmount = convertToINR(usdAmount);
+                document.getElementById('result').textContent = `${usdAmount} USD is equal to ${inrAmount.toFixed(2)} INR`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter a valid amount.';
+            }
+        }
+    </script>
+</body>
+</html>
